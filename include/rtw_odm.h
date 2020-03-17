@@ -30,7 +30,6 @@ typedef enum _HAL_PHYDM_OPS {
 	HAL_PHYDM_ABILITY_GET,
 } HAL_PHYDM_OPS;
 
-
 #define DYNAMIC_FUNC_DISABLE		(0x0)
 	u32 rtw_phydm_ability_ops(_adapter *adapter, HAL_PHYDM_OPS ops, u32 ability);
 
@@ -69,7 +68,6 @@ static inline u32 rtw_phydm_ability_get(_adapter *adapter)
 {
 	return rtw_phydm_ability_ops(adapter, HAL_PHYDM_ABILITY_GET, 0);
 }
-
 
 void rtw_odm_init_ic_type(_adapter *adapter);
 

@@ -103,7 +103,6 @@ enum {
 #define IEEE_CRYPT_ERR_TX_KEY_SET_FAILED		6
 #define IEEE_CRYPT_ERR_CARD_CONF_FAILED		7
 
-
 #define	IEEE_CRYPT_ALG_NAME_LEN			16
 
 #define WPA_CIPHER_NONE	BIT(0)
@@ -111,8 +110,6 @@ enum {
 #define WPA_CIPHER_WEP104 BIT(2)
 #define WPA_CIPHER_TKIP	BIT(3)
 #define WPA_CIPHER_CCMP	BIT(4)
-
-
 
 #define WPA_SELECTOR_LEN 4
 extern u8 RTW_WPA_OUI_TYPE[] ;
@@ -126,7 +123,6 @@ extern u8 WPA_CIPHER_SUITE_TKIP[];
 extern u8 WPA_CIPHER_SUITE_WRAP[];
 extern u8 WPA_CIPHER_SUITE_CCMP[];
 extern u8 WPA_CIPHER_SUITE_WEP104[];
-
 
 #define RSN_HEADER_LEN 4
 #define RSN_SELECTOR_LEN 4
@@ -257,7 +253,6 @@ typedef enum _RATR_TABLE_MODE {
 	RATR_INX_WIRELESS_AC_N = 8,
 } RATR_TABLE_MODE, *PRATR_TABLE_MODE;
 
-
 enum NETWORK_TYPE {
 	WIRELESS_INVALID = 0,
 	/* Sub-Element */
@@ -278,7 +273,6 @@ enum NETWORK_TYPE {
 	WIRELESS_11BG_24N = (WIRELESS_11B | WIRELESS_11G | WIRELESS_11_24N), /* tx: ofdm & cck & MCS, rx: ofdm & cck & MCS, hw: ofdm & cck */
 	WIRELESS_11_24AC = (WIRELESS_11B | WIRELESS_11G | WIRELESS_11AC),
 	WIRELESS_11_5AC = (WIRELESS_11A | WIRELESS_11AC),
-
 
 	/* Type for registry default wireless mode */
 	WIRELESS_11AGN = (WIRELESS_11A | WIRELESS_11G | WIRELESS_11_24N | WIRELESS_11_5N), /* tx: ofdm & MCS, rx: ofdm & MCS, hw: ofdm only */
@@ -308,10 +302,6 @@ enum NETWORK_TYPE {
 #define is_supported_ht(NetType) ((NetType) & (WIRELESS_11_24N | WIRELESS_11_5N) ? _TRUE : _FALSE)
 
 #define is_supported_vht(NetType) ((NetType) & (WIRELESS_11AC) ? _TRUE : _FALSE)
-
-
-
-
 
 typedef struct ieee_param {
 	u32 cmd;
@@ -380,7 +370,6 @@ struct sta_data {
 };
 #endif
 
-
 #if WIRELESS_EXT < 17
 	#define IW_QUAL_QUAL_INVALID   0x10
 	#define IW_QUAL_LEVEL_INVALID  0x20
@@ -399,10 +388,8 @@ struct sta_data {
    represents the 2304 bytes of real data, plus a possible 8 bytes of
    WEP IV and ICV. (this interpretation suggested by Ramiro Barreiro) */
 
-
 #define IEEE80211_HLEN			30
 #define IEEE80211_FRAME_LEN		(IEEE80211_DATA_LEN + IEEE80211_HLEN)
-
 
 /* this is stolen from ipw2200 driver */
 #define IEEE_IBSS_MAC_HASH_SIZE 31
@@ -435,7 +422,6 @@ struct rtw_ieee80211_hdr_3addr {
 	u8 addr3[ETH_ALEN];
 	u16 seq_ctl;
 } __attribute__((packed));
-
 
 struct rtw_ieee80211_hdr_qos {
 	u16 frame_ctl;
@@ -595,7 +581,6 @@ enum eap_type {
 #endif
 
 /* IEEE 802.11 defines */
-
 #define P80211_OUI_LEN 3
 
 #if defined(PLATFORM_LINUX) || defined(PLATFORM_FREEBSD)
@@ -748,13 +733,11 @@ struct ieee80211_snap_hdr {
 #define IEEE80211_DATA_HDR3_LEN 24
 #define IEEE80211_DATA_HDR4_LEN 30
 
-
 #define IEEE80211_STATMASK_SIGNAL (1<<0)
 #define IEEE80211_STATMASK_RSSI (1<<1)
 #define IEEE80211_STATMASK_NOISE (1<<2)
 #define IEEE80211_STATMASK_RATE (1<<3)
 #define IEEE80211_STATMASK_WEMASK 0x7
-
 
 #define IEEE80211_CCK_MODULATION    (1<<0)
 #define IEEE80211_OFDM_MODULATION   (1<<1)
@@ -764,7 +747,6 @@ struct ieee80211_snap_hdr {
 
 #define IEEE80211_CCK_RATE_LEN		4
 #define IEEE80211_NUM_OFDM_RATESLEN	8
-
 
 #define IEEE80211_CCK_RATE_1MB		        0x02
 #define IEEE80211_CCK_RATE_2MB		        0x04
@@ -817,7 +799,6 @@ struct ieee80211_snap_hdr {
 #define IEEE80211_NUM_OFDM_RATES	    8
 #define IEEE80211_NUM_CCK_RATES	            4
 #define IEEE80211_OFDM_SHIFT_MASK_A         4
-
 
 enum MGN_RATE {
 	MGN_1M		= 0x02,
@@ -1238,7 +1219,6 @@ struct ieee80211_info_element {
 } __attribute__((packed));
 #endif
 
-
 /*
  * These are the data types that can make up management packets
  *
@@ -1259,7 +1239,6 @@ struct ieee80211_info_element {
 #define IEEE80211_DEFAULT_TX_ESSID "Penguin"
 #define IEEE80211_DEFAULT_BASIC_RATE 10
 
-
 #if defined(PLATFORM_LINUX)
 struct ieee80211_authentication {
 	struct ieee80211_header_data header;
@@ -1268,7 +1247,6 @@ struct ieee80211_authentication {
 	u16 status;
 	/* struct ieee80211_info_element_hdr info_element; */
 } __attribute__((packed));
-
 
 struct ieee80211_probe_response {
 	struct ieee80211_header_data header;
@@ -1308,7 +1286,6 @@ struct ieee80211_txb {
 	u16 payload_size;
 	struct sk_buff *fragments[0];
 };
-
 
 /* SWEEP TABLE ENTRIES NUMBER*/
 #define MAX_SWEEP_TAB_ENTRIES		  42
@@ -1480,8 +1457,6 @@ typedef struct tx_pending_t {
 	struct ieee80211_txb *txb;
 } tx_pending_t;
 
-
-
 #define TID_NUM	16
 
 #define IEEE_A            (1<<0)
@@ -1504,7 +1479,6 @@ int ieee80211_get_hdrlen(u16 fc);
 	#define WLAN_ACTION_SA_QUERY 8
 	#define WLAN_ACTION_WMM 17
 #endif
-
 
 /* Action category code */
 enum rtw_ieee80211_category {
@@ -2021,7 +1995,7 @@ uint	rtw_is_cckrates_included(u8 *rate);
 
 uint	rtw_is_cckratesonly_included(u8 *rate);
 uint rtw_get_cckrate_size(u8 *rate,u32 rate_length);
-int rtw_check_network_type(unsigned char *rate, int ratelen, int channel);
+int rtw_check_network_type(unsigned char *rate);
 
 u8 rtw_check_invalid_mac_address(u8 *mac_addr, u8 check_local_bit);
 void rtw_macaddr_cfg(u8 *out, const u8 *hw_mac_addr);
@@ -2038,6 +2012,5 @@ u8 str_2char2num(u8 hch, u8 lch);
 void macstr2num(u8 *dst, u8 *src);
 u8 convert_ip_addr(u8 hch, u8 mch, u8 lch);
 int wifirate2_ratetbl_inx(unsigned char rate);
-
 
 #endif /* IEEE80211_H */

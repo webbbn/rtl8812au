@@ -19,7 +19,7 @@
 
 #define MAX_MP_XMITBUF_SZ	2048
 #define NR_MP_XMITFRAME		8
-#define MP_READ_REG_MAX_OFFSET 0x4FFF 
+#define MP_READ_REG_MAX_OFFSET 0x4FFF
 
 struct mp_xmit_frame {
 	_list	list;
@@ -74,7 +74,6 @@ struct mp_tx {
 #define MP_MAX_LINES		1000
 #define MP_MAX_LINES_BYTES	256
 
-
 typedef struct _RT_PMAC_PKT_INFO {
 	u8			MCS;
 	u8			Nss;
@@ -114,7 +113,6 @@ typedef struct _RT_PMAC_TX_INFO {
 	u8			VHT_Delimiter[4];
 	u8			MacAddress[6];
 } RT_PMAC_TX_INFO, *PRT_PMAC_TX_INFO;
-
 
 typedef void (*MPT_WORK_ITEM_HANDLER)(void *Adapter);
 typedef struct _MPT_CONTEXT {
@@ -159,7 +157,6 @@ typedef struct _MPT_CONTEXT {
 
 	u32			mpt_rf_path;
 
-
 	WIRELESS_MODE		MptWirelessModeToSw;	/* Wireless mode to switch. */
 	u8			MptChannelToSw;	/* Channel to switch. */
 	u8			MptInitGainToSet;	/* Initial gain to set. */
@@ -199,7 +196,6 @@ typedef struct _MPT_CONTEXT {
 
 	BOOLEAN			is_single_tone;
 
-
 	/* ACK counter asked by K.Y.. */
 	BOOLEAN			bMptEnableAckCounter;
 	u32			MptAckCounter;
@@ -235,7 +231,6 @@ typedef struct _MPT_CONTEXT {
 	BOOLEAN			bstbc;
 } MPT_CONTEXT, *PMPT_CONTEXT;
 /* #endif */
-
 
 /* #define RTPRIV_IOCTL_MP					( SIOCIWFIRSTPRIV + 0x17) */
 enum {
@@ -413,11 +408,7 @@ typedef struct _MP_FIRMWARE {
 	u32		ulFwLength;
 } RT_MP_FIRMWARE, *PRT_MP_FIRMWARE;
 
-
-
-
 /* *********************************************************************** */
-
 #define LOWER	_TRUE
 #define RAISE	_FALSE
 
@@ -484,7 +475,6 @@ typedef enum _MPT_BANDWIDTH {
 } MPT_BANDWIDTHE, *PMPT_BANDWIDTH;
 
 #define MAX_RF_PATH_NUMS	RF_PATH_MAX
-
 
 extern u8 mpdatarate[NumRates];
 
@@ -639,7 +629,6 @@ typedef enum	_MPT_TXPWR_DEF {
 	MPT_VHT
 } MPT_TXPWR_DEF;
 
-
 #define IS_MPT_HT_RATE(_rate)			(_rate >= MPT_RATE_MCS0 && _rate <= MPT_RATE_MCS31)
 #define IS_MPT_VHT_RATE(_rate)			(_rate >= MPT_RATE_VHT1SS_MCS0 && _rate <= MPT_RATE_VHT4SS_MCS9)
 #define IS_MPT_CCK_RATE(_rate)			(_rate >= MPT_RATE_1M && _rate <= MPT_RATE_11M)
@@ -705,7 +694,6 @@ void	rtw_mp_trigger_iqk(PADAPTER padapter);
 void	rtw_mp_trigger_lck(PADAPTER padapter);
 void	rtw_mp_trigger_dpk(PADAPTER padapter);
 u8 rtw_mp_mode_check(PADAPTER padapter);
-
 
 void hal_mpt_SwitchRfSetting(PADAPTER pAdapter);
 s32 hal_mpt_SetPowerTracking(PADAPTER padapter, u8 enable);

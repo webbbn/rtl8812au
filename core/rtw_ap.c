@@ -1009,7 +1009,7 @@ void update_bmc_sta(_adapter *padapter)
 		/* psta->dot118021XPrivacy = _NO_PRIVACY_; */ /* !!! remove it, because it has been set before this. */
 
 		supportRateNum = rtw_get_rateset_len((u8 *)&pcur_network->SupportedRates);
-		network_type = rtw_check_network_type((u8 *)&pcur_network->SupportedRates, supportRateNum, pcur_network->Configuration.DSConfig);
+		network_type = rtw_check_network_type((u8 *)&pcur_network->SupportedRates, pcur_network->Configuration.DSConfig);
 		if (IsSupportedTxCCK(network_type))
 			network_type = WIRELESS_11B;
 		else if (network_type == WIRELESS_INVALID) { /* error handling */

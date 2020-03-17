@@ -186,7 +186,7 @@ uint	rtw_is_cckratesonly_included(u8 *rate)
 
 }
 
-int rtw_check_network_type(unsigned char *rate, int ratelen, int channel)
+int rtw_check_network_type(unsigned char *rate, int ratelen)
 {
 	if (channel > 14) {
 		if ((rtw_is_cckrates_included(rate)) == _TRUE)
