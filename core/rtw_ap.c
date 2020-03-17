@@ -171,7 +171,7 @@ void rtw_add_bcn_ie(_adapter *padapter, WLAN_BSSID_EX *pnetwork, u8 index, u8 *d
 	u8	bmatch = _FALSE;
 	u8	*pie = pnetwork->IEs;
 	u8	*p = NULL, *dst_ie = NULL, *premainder_ie = NULL, *pbackup_remainder_ie = NULL;
-	u32	i, offset, ielen, ie_offset, remainder_ielen = 0;
+	u32	i, offset, ielen = 0, ie_offset, remainder_ielen = 0;
 
 	for (i = sizeof(NDIS_802_11_FIXED_IEs); i < pnetwork->IELength;) {
 		pIE = (PNDIS_802_11_VARIABLE_IEs)(pnetwork->IEs + i);
@@ -1009,7 +1009,7 @@ void update_bmc_sta(_adapter *padapter)
 		/* psta->dot118021XPrivacy = _NO_PRIVACY_; */ /* !!! remove it, because it has been set before this. */
 
 		supportRateNum = rtw_get_rateset_len((u8 *)&pcur_network->SupportedRates);
-		network_type = rtw_check_network_type((u8 *)&pcur_network->SupportedRates, pcur_network->Configuration.DSConfig);
+		network_type = rtw_check_network_type((u8 *)&pcur_network->SupportedRates, supportRateNum, pcur_network->Configuration.DSConfig);
 		if (IsSupportedTxCCK(network_type))
 			network_type = WIRELESS_11B;
 		else if (network_type == WIRELESS_INVALID) { /* error handling */

@@ -191,7 +191,6 @@ void indicate_wx_scan_complete_event(_adapter *padapter)
 #endif
 }
 
-
 void rtw_indicate_wx_assoc_event(_adapter *padapter)
 {
 	union iwreq_data wrqu;
@@ -569,20 +568,15 @@ static inline char *iwe_stream_wpa_wpa2_process(_adapter *padapter,
 
 
 	if (pbuf) {
-		u8 *buf;
+		p = pbuf;
 
 		/* parsing WPA/WPA2 IE */
 		if (pnetwork->network.Reserved[0] != BSS_TYPE_PROB_REQ) { /* Probe Request */
-
-			buf = kzalloc(MAX_WPA_IE_LEN, GFP_ATOMIC);
-			if (!buf)
-			return start;
-
 			out_len = rtw_get_sec_ie(pnetwork->network.IEs , pnetwork->network.IELength, rsn_ie, &rsn_len, wpa_ie, &wpa_len);
 
 			if (wpa_len > 0) {
 
-				//_rtw_memset(pbuf, 0, buf_size);
+				_rtw_memset(pbuf, 0, buf_size);
 				p += sprintf(p, "wpa_ie=");
 				for (i = 0; i < wpa_len; i++)
 					p += sprintf(p, "%02x", wpa_ie[i]);
@@ -607,7 +601,7 @@ static inline char *iwe_stream_wpa_wpa2_process(_adapter *padapter,
 			}
 			if (rsn_len > 0) {
 
-				//_rtw_memset(pbuf, 0, buf_size);
+				_rtw_memset(pbuf, 0, buf_size);
 				p += sprintf(p, "rsn_ie=");
 				for (i = 0; i < rsn_len; i++)
 					p += sprintf(p, "%02x", rsn_ie[i]);
@@ -621,7 +615,7 @@ static inline char *iwe_stream_wpa_wpa2_process(_adapter *padapter,
 				iwe->u.data.length = rsn_len;
 				start = iwe_stream_add_point(info, start, stop, iwe, rsn_ie);
 			}
-			kfree(buf);
+
 		}
 
 		rtw_mfree(pbuf, buf_size);
@@ -3168,7 +3162,7 @@ static int rtw_wx_get_nick(struct net_device *dev,
 		_rtw_memcpy(extra, "<WIFI@REALTEK>", 14);
 	}
 
-	/* rtw_signal_process(pid, SIGUSR1); /* /* for test */
+	///rtw_signal_process(pid, SIGUSR1); /* for test */
 
 	/* dump debug info here	 */
 #if 0
@@ -6226,7 +6220,7 @@ static int rtw_dbg_port(struct net_device *dev,
 				padapter->bLinkInfoDump = extra_arg;
 
 			else if ((extra_arg == 2) || (extra_arg == 0 && pre_mode == 2)) { /* consider power_saving */
-				RTW_INFO("linked_info_dump =%s\n", (padapter->bLinkInfoDump)?"enable":"disable")
+				RTW_INFO("linked_info_dump =%s\n", (padapter->bLinkInfoDump)?"enable":"disable");
 				linked_info_dump(padapter, extra_arg);
 			}
 
@@ -8649,18 +8643,18 @@ static int rtw_mp_efuse_get(struct net_device *dev,
 			goto exit;
 		}
 
-		RTW_INFO("%s: {VID,PID}={", __FUNCTION__); */
+		RTW_INFO("%s: {VID,PID}={", __FUNCTION__);
 		*extra = 0;
 		pextra = extra;
 		for (i = 0; i < cnts; i++) {
-			RTW_INFO("0x%02x", data[i]); */
+			RTW_INFO("0x%02x", data[i]);
 			pextra += sprintf(pextra, "0x%02X", data[i]);
 			if (i != (cnts - 1)) {
-				RTW_INFO(","); */
+				RTW_INFO(",");
 				pextra += sprintf(pextra, ",");
 			}
 		}
-		RTW_INFO("}\n"); */
+		RTW_INFO("}\n");
 	} else if (strcmp(tmp[0], "ableraw") == 0) {
 #ifdef RTW_HALMAC
 		raw_maxsize = efuse_GetavailableSize(padapter);
@@ -8694,16 +8688,16 @@ static int rtw_mp_efuse_get(struct net_device *dev,
 				RTW_INFO("%02X ", pEfuseHal->BTEfuseInitMap[i+j]);
 				pextra += sprintf(pextra, "%02X ", pEfuseHal->BTEfuseInitMap[i+j]);
 			}
-			RTW_INFO("\t"); */
+			RTW_INFO("\t");
 			pextra += sprintf(pextra, "\t");
 			for (; j < 16; j++) {
-				RTW_INFO("%02X ", pEfuseHal->BTEfuseInitMap[i+j]); */
+				RTW_INFO("%02X ", pEfuseHal->BTEfuseInitMap[i+j]);
 				pextra += sprintf(pextra, "%02X ", pEfuseHal->BTEfuseInitMap[i+j]);
 			}
-			RTW_INFO("\n"); */
+			RTW_INFO("\n");
 			pextra += sprintf(pextra, "\n");
 		}
-		RTW_INFO("\n"); */
+		RTW_INFO("\n");
 	} else if (strcmp(tmp[0], "btbmap") == 0) {
 		BTEfuse_PowerSwitch(padapter, 1, _TRUE);
 
@@ -8714,7 +8708,7 @@ static int rtw_mp_efuse_get(struct net_device *dev,
 			goto exit;
 		}
 
-		RTW_INFO("OFFSET\tVALUE(hex)\n"); */
+		RTW_INFO("OFFSET\tVALUE(hex)\n");
 		sprintf(extra, "\n");
 		for (i = 512; i < 1024 ; i += 16) {
 			/*			RTW_INFO("0x%03x\t", i); */
